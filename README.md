@@ -19,6 +19,11 @@ Setiap halaman dalam aplikasi ini dibuat dan dikembangkan oleh para kontributor 
 - /rafly : menampilkan rewrite file dari rafly
 - /alif  : menampilkan rewrite file dari alif
 - /brandon  : menampilkan rewrite file dari brandon
+- /rifqi  : menampilkan rewrite file dari rifqi
+- /tegar  : menampilkan rewrite file dari tegar
+- /nita  : menampilkan rewrite file dari nita
+- /wahyu  : menampilkan rewrite file dari wahyu
+- /jeje  : menampilkan rewrite file dari jetro
 
 ## Instalasi
 
