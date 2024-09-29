@@ -40,7 +40,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   // Alif's web route
-  else if(reqUrl.pathname === "/alif" && req.method === "GET"){
+  else if (reqUrl.pathname === "/alif" && req.method === "GET") {
     nameFile = "fileUtama.txt";
     textContent = "Perkenalkan Saya Ahmad Alif Ramadhan, dari Team 2 kelas FSW 2";
     try {
@@ -52,9 +52,9 @@ const server = http.createServer(async (req, res) => {
       res.end(`Error di server: ${error.message}`);
     }
   }
-    
+
   // Brandon's web route
-  else if(reqUrl.pathname === "/brandon" && req.method === "GET"){
+  else if (reqUrl.pathname === "/brandon" && req.method === "GET") {
     // Page content declaration
     Name = "Gede Brandon Abelio Ogaden";
     Class = "FSW-2"
@@ -63,26 +63,26 @@ const server = http.createServer(async (req, res) => {
       const result = await fileUpdateBrandon(Name, Class);
       // Pass the result to the website
       res.end(`${result}`);
-    }catch (error) {
+    } catch (error) {
       // Error handling
       res.end(`There seems to be an error: ${error.message}`)
     }
-  } 
-  
-  
-  else if (reqUrl.pathname === "/rifqi" && req.method === "GET"){
+  }
+
+
+  else if (reqUrl.pathname === "/rifqi" && req.method === "GET") {
     try {
       // Call write & read function
       const newContent = await fileUpdaterifqi();
       // Output Website
       res.end(newContent);
-  } catch (error) {
+    } catch (error) {
       console.log(error);
       //  Error Handling
       res.end(`Terjadi kesalahan: ${error.message}`);
+    }
   }
-  }
-    
+
   else {
     // If routes is not found
     res.end("Page not Found");
