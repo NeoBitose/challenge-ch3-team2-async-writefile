@@ -10,6 +10,7 @@ const fileUpdateBrandon = require("./components/brandon.js");
 const fileUpdateAlif = require("./components/alif.js");
 const fileUpdaterifqi = require("./components/rifqi.js");
 const fileUpdateTegar = require("./components/tegar.js");
+const fileUpdateWahyu = require("./components/wahyu.js");
 
 // Fungsi untuk Nita
 async function fileUpdateNita(file, text) {
@@ -70,6 +71,7 @@ const server = http.createServer(async (req, res) => {
       // Error handling
       res.end(`There seems to be an error: ${error.message}`);
     }
+
   }
 
   // Nita's web route
@@ -114,6 +116,25 @@ const server = http.createServer(async (req, res) => {
     } catch (error) {
       // error handling for file writing
       res.end(`There seems to be an error: ${error.message}`);
+    }
+  }
+
+  // wahyu web route
+  else if (reqUrl.pathname === "/wahyu" && req.method === "GET") {
+    // set file path
+    nameFile = "fileUtama.txt";
+    // set content for file
+    content =
+      "Hallo gengs, perkenalkan nama saya wahyu anang zulfikri dari team 2 kelas FSW2";
+
+    try {
+      // call the function from wahyu.js
+      const result = await fileUpdateWahyu(nameFile, content);
+      res.end(
+        `Sudah berhasil menampilkan update terbaru dari Wahyu : \n${result}`
+      );
+    } catch (error) {
+      res.end(`Error di server: ${error.message}`);
     }
   } else {
     // If routes is not found
