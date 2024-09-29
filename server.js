@@ -3,9 +3,9 @@ const http = require("http");
 const url = require("url");
 const fs = require("fs");
 const fsAsync = require("fs").promises;
-// Import individual functions from index.js
-const fileUpdateBrandon = require('./index.js'); // <= add other function imports here
-// const {fileUpdateBrandon, fileUpdatePerson2, fileUpdatePerson3} = require('./index.js');
+// Import individual functions from component brandon
+const fileUpdateBrandon = require('./components/brandon.js');
+const fileUpdateAlif = require('./components/alif.js');
 
 // Fungsi buat nulis dan baca file
 async function handleFileOperation() {
@@ -18,20 +18,6 @@ async function handleFileOperation() {
     const updatedContent = await fsAsync.readFile(filePath, "utf8");
     return updatedContent;
   } catch (error) {
-    return `Oops, ada error nih: ${error.message}`;
-  }
-}
-
-async function fileUpdateAlif(file, text) {
-  console.log(file, text)
-  try {
-    // menulis text kedalam file tujuan
-    await fsAsync.writeFile(file, text, "utf-8")
-    // membaca file tujuan tsetelah update
-    const updateText = await fsAsync.readFile(`./${file}`, "utf-8")
-    return updateText;
-  } 
-  catch (error) {
     return `Oops, ada error nih: ${error.message}`;
   }
 }
