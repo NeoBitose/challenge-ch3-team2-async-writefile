@@ -8,6 +8,7 @@ const fsAsync = require("fs").promises;
 const fileUpdateRafly = require("./components/rafly.js");
 const fileUpdateBrandon = require("./components/brandon.js");
 const fileUpdateAlif = require("./components/alif.js");
+const fileUpdateJetro = require("./components/jetro.js");
 const fileUpdaterifqi = require("./components/rifqi.js");
 const fileUpdateTegar = require("./components/tegar.js");
 const fileUpdateWahyu = require("./components/wahyu.js");
@@ -56,6 +57,15 @@ const server = http.createServer(async (req, res) => {
       res.end(`Error di server: ${error.message}`);
     }
   }
+
+  else if (reqUrl.pathname === "/jeje" && req.method === "GET") {
+        try {
+            const result = await fileUpdateJetro()
+            res.end(`${result}`)
+        } catch (error) {
+            res.end(`mau kemana kamu ${error.message}`)
+        }
+    }
 
   // Brandon's web route
   else if (reqUrl.pathname === "/brandon" && req.method === "GET") {
