@@ -24,6 +24,21 @@ async function handleFileOperation() {
   }
 }
 
+// Fungsi untuk Nita
+async function fileUpdateNita(file, text) {
+  console.log(file, text)
+  try {
+    // menulis text ke file tujuan
+    await fsAsync.writeFile(file, text, "utf-8")
+    // membaca file tujuan setelah update
+    const updatedText = await fsAsync.readFile(`./${file}`, "utf-8")
+    return updatedText;
+  }
+  catch (error) {
+    return `Oops, ada error nih: ${error.message}`;
+  }
+}
+
 // HTTP Server initializations
 const server = http.createServer(async (req, res) => {
   const reqUrl = url.parse(req.url, true);
@@ -70,6 +85,19 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  // Nita's web route
+  else if (reqUrl.pathname === "/nita" && req.method === "GET") {
+    const nameFile = "fileUtama.txt";
+    const textContent = "Perkenalkan, saya Nita Fitrotul Mar'ah dari kelas FSW 2.";
+    try {
+      // Panggil fungsi buat handle nulis & baca file      
+      const result = await fileUpdateNita(nameFile, textContent);
+      // memberikan respon pada browser
+      res.end(`Update dari Nita: \n${result}`);
+    } catch (error) {
+      res.end(`Error di server: ${error.message}`);
+    }
+  }
 
   else if (reqUrl.pathname === "/rifqi" && req.method === "GET") {
     try {
@@ -85,20 +113,20 @@ const server = http.createServer(async (req, res) => {
   }
 
   // tegar's web route
-  else if(reqUrl.pathname === "/tegar" && req.method === "GET"){
+  else if (reqUrl.pathname === "/tegar" && req.method === "GET") {
     // set file path
     filePath = "fileUtama.txt";
     // set content for file
     newContent = `hello, my name is Tegar from FSW-2. this is a random integer = ${Math.floor(Math.random() * 101)
-    }`
+      }`
 
     // call the function from tegar.js
-    try{
+    try {
       const resultRewrite = await fileUpdateTegar(filePath, newContent)
       res.end(`${resultRewrite}`)
     }
     // error handling for file writing
-    catch(error){
+    catch (error) {
       res.end(`There seems to be an error: ${error.message}`)
     }
 
