@@ -3,9 +3,11 @@ const http = require("http");
 const url = require("url");
 const fs = require("fs");
 const fsAsync = require("fs").promises;
-// Import individual functions from index.js
-const fileUpdateBrandon = require('./index.js'); // <= add other function imports here
-// const {fileUpdateBrandon, fileUpdatePerson2, fileUpdatePerson3} = require('./index.js');
+// Import individual functions from component brandon
+const fileUpdateBrandon = require('./components/brandon.js');
+const fileUpdateAlif = require('./components/alif.js');
+const fileUpdaterifqi = require('./components/rifqi.js');
+const fileUpdateTegar = require('./components/tegar.js');
 
 // Fungsi buat nulis dan baca file
 async function handleFileOperation() {
@@ -22,20 +24,6 @@ async function handleFileOperation() {
   }
 }
 
-async function fileUpdateAlif(file, text) {
-  console.log(file, text)
-  try {
-    // menulis text kedalam file tujuan
-    await fsAsync.writeFile(file, text, "utf-8")
-    // membaca file tujuan setelah update
-    const updateText = await fsAsync.readFile(`./${file}`, "utf-8")
-    return updateText;
-  } 
-  catch (error) {
-    return `Oops, ada error nih: ${error.message}`;
-  }
-}
-
 // Fungsi untuk Nita
 async function fileUpdateNita(file, text) {
   console.log(file, text)
@@ -45,7 +33,7 @@ async function fileUpdateNita(file, text) {
     // membaca file tujuan setelah update
     const updatedText = await fsAsync.readFile(`./${file}`, "utf-8")
     return updatedText;
-  } 
+  }
   catch (error) {
     return `Oops, ada error nih: ${error.message}`;
   }
@@ -68,7 +56,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   // Alif's web route
-  else if(reqUrl.pathname === "/alif" && req.method === "GET"){
+  else if (reqUrl.pathname === "/alif" && req.method === "GET") {
     nameFile = "fileUtama.txt";
     textContent = "Perkenalkan Saya Ahmad Alif Ramadhan, dari Team 2 kelas FSW 2";
     try {
@@ -80,9 +68,9 @@ const server = http.createServer(async (req, res) => {
       res.end(`Error di server: ${error.message}`);
     }
   }
-    
+
   // Brandon's web route
-  else if(reqUrl.pathname === "/brandon" && req.method === "GET"){
+  else if (reqUrl.pathname === "/brandon" && req.method === "GET") {
     // Page content declaration
     Name = "Gede Brandon Abelio Ogaden";
     Class = "FSW-2"
@@ -91,14 +79,14 @@ const server = http.createServer(async (req, res) => {
       const result = await fileUpdateBrandon(Name, Class);
       // Pass the result to the website
       res.end(`${result}`);
-    }catch (error) {
+    } catch (error) {
       // Error handling
       res.end(`There seems to be an error: ${error.message}`)
     }
   }
 
   // Nita's web route
-  else if(reqUrl.pathname === "/nita" && req.method === "GET"){
+  else if (reqUrl.pathname === "/nita" && req.method === "GET") {
     const nameFile = "fileUtama.txt";
     const textContent = "Perkenalkan, saya Nita Fitrotul Mar'ah dari kelas FSW 2.";
     try {
@@ -111,8 +99,41 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  else if (reqUrl.pathname === "/rifqi" && req.method === "GET") {
+    try {
+      // Call write & read function
+      const newContent = await fileUpdaterifqi();
+      // Output Website
+      res.end(newContent);
+    } catch (error) {
+      console.log(error);
+      //  Error Handling
+      res.end(`Terjadi kesalahan: ${error.message}`);
+    }
+  }
+
+  // tegar's web route
+  else if (reqUrl.pathname === "/tegar" && req.method === "GET") {
+    // set file path
+    filePath = "fileUtama.txt";
+    // set content for file
+    newContent = `hello, my name is Tegar from FSW-2. this is a random integer = ${Math.floor(Math.random() * 101)
+      }`
+
+    // call the function from tegar.js
+    try {
+      const resultRewrite = await fileUpdateTegar(filePath, newContent)
+      res.end(`${resultRewrite}`)
+    }
+    // error handling for file writing
+    catch (error) {
+      res.end(`There seems to be an error: ${error.message}`)
+    }
+
+  }
+
   else {
-    // If routes are not found
+    // If routes is not found
     res.end("Page not Found");
   }
 });

@@ -18,6 +18,7 @@ Setiap halaman dalam aplikasi ini dibuat dan dikembangkan oleh para kontributor 
 
 - /rafly : menampilkan rewrite file dari rafly
 - /alif  : menampilkan rewrite file dari alif
+- /brandon  : menampilkan rewrite file dari brandon
 
 ## Instalasi
 
