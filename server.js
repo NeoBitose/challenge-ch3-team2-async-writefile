@@ -7,6 +7,7 @@ const fsAsync = require("fs").promises;
 const fileUpdateBrandon = require('./components/brandon.js');
 const fileUpdateAlif = require('./components/alif.js');
 const fileUpdaterifqi = require('./components/rifqi.js');
+const fileUpdateTegar = require('./components/tegar.js');
 
 // Fungsi buat nulis dan baca file
 async function handleFileOperation() {
@@ -81,6 +82,26 @@ const server = http.createServer(async (req, res) => {
       //  Error Handling
       res.end(`Terjadi kesalahan: ${error.message}`);
     }
+  }
+
+  // tegar's web route
+  else if(reqUrl.pathname === "/tegar" && req.method === "GET"){
+    // set file path
+    filePath = "fileUtama.txt";
+    // set content for file
+    newContent = `hello, my name is Tegar from FSW-2. this is a random integer = ${Math.floor(Math.random() * 101)
+    }`
+
+    // call the function from tegar.js
+    try{
+      const resultRewrite = await fileUpdateTegar(filePath, newContent)
+      res.end(`${resultRewrite}`)
+    }
+    // error handling for file writing
+    catch(error){
+      res.end(`There seems to be an error: ${error.message}`)
+    }
+
   }
 
   else {
