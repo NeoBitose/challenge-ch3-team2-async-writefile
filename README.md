@@ -1,8 +1,6 @@
 # Async Write File Javascript
 
-Aplikasi Async-WriteFile adalah sebuah program yang dirancang untuk memodifikasi dan menyimpan teks secara asinkron menggunakan fungsi asynchronous dalam JavaScript. Aplikasi ini memanfaatkan fitur asinkron dalam Node.js untuk menangani operasi file, seperti menulis, membaca, atau mengubah konten teks dengan efisien tanpa memblokir thread utama. 
-
-Setiap halaman dalam aplikasi ini dibuat dan dikembangkan oleh para kontributor yang berperan aktif dalam menambahkan berbagai fitur dan fungsionalitas. aplikasi ini memastikan bahwa proses penulisan file berjalan lancar tanpa menimbulkan hambatan pada performa aplikasi secara keseluruhan. Kontributor juga diberikan fleksibilitas untuk menyesuaikan halaman mereka masing-masing
+Aplikasi Async-WriteFile adalah sebuah program yang dirancang untuk memodifikasi dan menyimpan teks secara asinkron menggunakan fungsi asynchronous dalam JavaScript. Aplikasi ini memanfaatkan fitur asinkron dalam Node.js untuk menangani operasi file, seperti menulis, membaca, atau mengubah konten teks 
 
 ## Daftar Isi
 
@@ -14,7 +12,13 @@ Setiap halaman dalam aplikasi ini dibuat dan dikembangkan oleh para kontributor 
 
 ## Tentang Proyek
 
+Setiap halaman dalam aplikasi ini dibuat dan dikembangkan oleh para kontributor yang berperan aktif dalam menambahkan berbagai fitur dan fungsionalitas. aplikasi ini memastikan bahwa proses penulisan file berjalan lancar tanpa menimbulkan hambatan pada performa aplikasi secara keseluruhan. Kontributor juga diberikan fleksibilitas untuk menyesuaikan halaman mereka masing-masing.
+
 ## Fitur
+
+- /rafly : menampilkan rewrite file dari rafly
+- /alif  : menampilkan rewrite file dari alif
+- /brandon  : menampilkan rewrite file dari brandon
 
 ## Instalasi
 
@@ -25,17 +29,14 @@ Ikuti langkah-langkah berikut untuk menginstal dan menjalankan aplikasi ini di k
    ```bash
    git clone https://github.com/NeoBitose/challenge-ch3-team2-async-writefile.git
    ```
-2. **Jalankan 'npm start' pada terminal anda**:
-   - Buka direktori proyek dan jalankan 'npm start' pada terminal
+2. **Jalankan 'node server.js' pada terminal anda**:
+   - Buka direktori proyek dan jalankan 'node server.js' pada terminal
 
 3. **Klik alamat url yang ada di terminal**:
    - buka alamat url 'localhost:3000' yang anda dapatkan di dalam terminal
  
 4. **Explore fitur yang tersedia**:
    - Jelajahi halaman yang tersedia untuk melihat jalannya fungsi asyncronous pada penulisan file txt
-
-
-## Cara Penggunaan
 
 ## Kontribusi
 
