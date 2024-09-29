@@ -7,7 +7,24 @@ const fsAsync = require("fs").promises;
 const fileUpdateBrandon = require('./index.js'); // <= add other function imports here
 // const {fileUpdateBrandon, fileUpdatePerson2, fileUpdatePerson3} = require('./index.js');
 
+// Fungsi buat nulis dan baca file
+async function handleFileOperation() {
+  const filePath = "./fileUtama.txt";
+  const newContent =
+    "Ini adalah konten baru dari Rafly Aziz Abdillah, kelas FSW 2";
 
+  try {
+    // Tulis (timpa) file dengan konten baru
+    await fsAsync.writeFile(filePath, newContent, "utf8");
+
+    // Baca lagi file setelah di-update
+    const updatedContent = await fsAsync.readFile(filePath, "utf8");
+
+    return updatedContent;
+  } catch (error) {
+    return `Oops, ada error nih: ${error.message}`;
+  }
+}
 
 async function fileUpdateAlif(file, text) {
   console.log(file, text)
