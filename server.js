@@ -88,7 +88,6 @@ const server = http.createServer(async (req, res) => {
       res.end(`There seems to be an error: ${error.message}`);
     }
 
-  } else if (reqUrl.pathname === "/rifqi" && req.method === "GET") {
   }
 
   // Nita's web route
@@ -134,17 +133,8 @@ const server = http.createServer(async (req, res) => {
     } catch (error) {
       // error handling for file writing
       res.end(`There seems to be an error: ${error.message}`);
-    newContent = `hello, my name is Tegar from FSW-2. this is a random integer = ${Math.floor(Math.random() * 101)
-      }`
-
-    // call the function from tegar.js
-    try {
-      const resultRewrite = await fileUpdateTegar(filePath, newContent)
-      res.end(`${resultRewrite}`)
-    }
-    // error handling for file writing
-    catch (error) {
-      res.end(`There seems to be an error: ${error.message}`)
+      newContent = `hello, my name is Tegar from FSW-2. this is a random integer = ${Math.floor(Math.random() * 101)
+        }`
     }
   }
 
