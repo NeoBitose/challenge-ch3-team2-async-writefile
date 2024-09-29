@@ -10,16 +10,12 @@ const fileUpdateBrandon = require('./index.js'); // <= add other function import
 // Fungsi buat nulis dan baca file
 async function handleFileOperation() {
   const filePath = "./fileUtama.txt";
-  const newContent =
-    "Ini adalah konten baru dari Rafly Aziz Abdillah, kelas FSW 2";
-
+  const newContent = "Ini adalah konten baru dari Rafly Aziz Abdillah, kelas FSW 2";
   try {
     // Tulis (timpa) file dengan konten baru
     await fsAsync.writeFile(filePath, newContent, "utf8");
-
     // Baca lagi file setelah di-update
     const updatedContent = await fsAsync.readFile(filePath, "utf8");
-
     return updatedContent;
   } catch (error) {
     return `Oops, ada error nih: ${error.message}`;
@@ -69,6 +65,7 @@ const server = http.createServer(async (req, res) => {
       res.end(`Error di server: ${error.message}`);
     }
   }
+    
   // Brandon's web route
   else if(reqUrl.pathname === "/brandon" && req.method === "GET"){
     // Page content declaration
@@ -84,6 +81,7 @@ const server = http.createServer(async (req, res) => {
       res.end(`There seems to be an error: ${error.message}`)
     }
   }
+    
   else {
     // If routes is not found
     res.end("Page not Found");
