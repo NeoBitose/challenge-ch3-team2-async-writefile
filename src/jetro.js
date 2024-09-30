@@ -3,7 +3,7 @@ const fsAsync = require("fs").promises;
 
 async function fileUpdateRifqi() {
     //  Path & New Content
-    const filePath = "./fileUtama.txt";
+    const filePath = "./assets/mainFile.txt";
     const Content =
         "Update data nich, saya Jetro Sulthan dari Universitas Jember hehehehee";
     // Async write & read

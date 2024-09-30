@@ -5,27 +5,14 @@ const fs = require("fs");
 const fsAsync = require("fs").promises;
 
 // Import individual functions from each component
-const fileUpdateRafly = require("./components/rafly.js");
-const fileUpdateBrandon = require("./components/brandon.js");
-const fileUpdateAlif = require("./components/alif.js");
-const fileUpdateJetro = require("./components/jetro.js");
-const fileUpdaterifqi = require("./components/rifqi.js");
-const fileUpdateTegar = require("./components/tegar.js");
-const fileUpdateWahyu = require("./components/wahyu.js");
-
-// Fungsi untuk Nita
-async function fileUpdateNita(file, text) {
-  console.log(file, text);
-  try {
-    // menulis text ke file tujuan
-    await fsAsync.writeFile(file, text, "utf-8");
-    // membaca file tujuan setelah update
-    const updatedText = await fsAsync.readFile(`./${file}`, "utf-8");
-    return updatedText;
-  } catch (error) {
-    return `Oops, ada error nih: ${error.message}`;
-  }
-}
+const fileUpdateRafly = require("./src/rafly.js");
+const fileUpdateBrandon = require("./src/brandon.js");
+const fileUpdateAlif = require("./src/alif.js");
+const fileUpdateJetro = require("./src/jetro.js");
+const fileUpdaterifqi = require("./src/rifqi.js");
+const fileUpdateTegar = require("./src/tegar.js");
+const fileUpdateWahyu = require("./src/wahyu.js");
+const fileUpdateNita = require("./src/nita.js");
 
 // HTTP Server initializations
 const server = http.createServer(async (req, res) => {
@@ -45,7 +32,7 @@ const server = http.createServer(async (req, res) => {
 
   // Alif's web route
   else if (reqUrl.pathname === "/alif" && req.method === "GET") {
-    nameFile = "fileUtama.txt";
+    nameFile = "mainFile.txt";
     textContent =
       "Perkenalkan Saya Ahmad Alif Ramadhan, dari Team 2 kelas FSW 2";
     try {
@@ -86,7 +73,7 @@ const server = http.createServer(async (req, res) => {
 
   // Nita's web route
   else if (reqUrl.pathname === "/nita" && req.method === "GET") {
-    const nameFile = "fileUtama.txt";
+    const nameFile = "mainFile.txt";
     const textContent =
       "Perkenalkan, saya Nita Fitrotul Mar'ah dari kelas FSW 2.";
     try {
@@ -113,7 +100,7 @@ const server = http.createServer(async (req, res) => {
   // tegar's web route
   else if (reqUrl.pathname === "/tegar" && req.method === "GET") {
     // set file path
-    filePath = "fileUtama.txt";
+    filePath = "./assets/mainFile.txt";
     // set content for file
     newContent = `hello, my name is Tegar from FSW-2. this is a random integer = ${Math.floor(
       Math.random() * 101
@@ -132,7 +119,7 @@ const server = http.createServer(async (req, res) => {
   // wahyu web route
   else if (reqUrl.pathname === "/wahyu" && req.method === "GET") {
     // set file path
-    nameFile = "fileUtama.txt";
+    nameFile = "mainFile.txt";
     // set content for file
     content =
       "Hallo gengs, perkenalkan nama saya wahyu anang zulfikri dari team 2 kelas FSW2";

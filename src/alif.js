@@ -6,9 +6,9 @@ async function fileUpdateAlif(file, text) {
     console.log(file, text)
     try {
       // menulis text kedalam file tujuan
-      await fsAsync.writeFile(file, text, "utf-8")
+      await fsAsync.writeFile(`./assets/${file}`, text, "utf-8")
       // membaca file tujuan tsetelah update
-      const updateText = await fsAsync.readFile(`./${file}`, "utf-8")
+      const updateText = await fsAsync.readFile(`./assets/${file}`, "utf-8")
       return updateText;
     } 
     catch (error) {
