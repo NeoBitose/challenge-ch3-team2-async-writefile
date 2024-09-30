@@ -4,7 +4,7 @@ const fsAsync = require("fs").promises;
 // Brandon's Async Write & Read Function
 async function fileUpdateBrandon (Name, Class) {
     // Path & content declarations
-    const filePath = "./fileUtama.txt";
+    const filePath = "./assets/mainFile.txt";
     const content = `Name\t: ${Name}\nClass\t: ${Class}`;
     // Async write and read file
     try {

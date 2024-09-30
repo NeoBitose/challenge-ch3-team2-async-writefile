@@ -2,7 +2,7 @@ const fsAsync = require("fs").promises;
 
 // Fungsi buat nulis dan baca file
 async function handleFileOperation() {
-  const filePath = "./fileUtama.txt";
+  const filePath = "./assets/mainFile.txt";
   const newContent =
     "Ini adalah konten baru dari Rafly Aziz Abdillah, kelas FSW 2";
 
